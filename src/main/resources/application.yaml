@@ -2,7 +2,18 @@ server:
   port: 8089
 
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+  #h2:
+   # console:
+    #  enabled: true
+     # path: /h2-console
+  ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+  datasource:
+    url: jdbc:mysql://localhost:3306/mysql?useSSL=false
+    username: iotpcf
+    password: iotpcf
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none

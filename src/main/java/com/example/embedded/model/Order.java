@@ -10,7 +10,7 @@ import java.util.Map;
 @Entity(name="bt_order")
 public class Order {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     @Convert(converter = HashMapConverter.class)
