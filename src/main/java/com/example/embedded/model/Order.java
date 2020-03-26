@@ -4,7 +4,9 @@ import com.example.embedded.util.HashMapConverter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Entity(name="bt_order")
@@ -13,9 +15,10 @@ public class Order {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @Convert(converter = HashMapConverter.class)
-    @NotNull
-    private Map<String, Product> products;
+/*    @Convert(converter = HashMapConverter.class)
+    @NotNull*/
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<Product> products;
 
     private Date createdDate;
 
@@ -23,11 +26,11 @@ public class Order {
         return id;
     }
 
-    public Map<String, Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Map<String, Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 
